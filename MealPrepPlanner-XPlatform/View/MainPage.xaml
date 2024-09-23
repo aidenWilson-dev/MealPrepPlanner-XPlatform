@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MealPrepPlanner_XPlatform.View.MainPage">
+
+    <VerticalStackLayout
+        Padding="50,50, 50, 50"
+        Spacing="50">
+        <Image
+            Source="prep_icon.png"
+            HeightRequest="350"
+            Aspect="AspectFit"/>
+        
+        <Label
+            Text="Meal Prep Planner" 
+            HorizontalTextAlignment="Center"
+            Style="{StaticResource Headline}"/>
+        
+        <Button
+            x:Name="RecipeBook"
+            Text="Recipe Book"
+            Clicked="RecipeBook_OnClicked"/>
+        
+        <Button
+            x:Name="MealPlanner"
+            Text="Meal Planner"
+            Clicked="MealPlanner_OnClicked"/>
+        
+        <Button
+            x:Name="Exit"
+            Text="Exit"
+            Clicked="Exit_OnClicked"/>
+        
+
+    </VerticalStackLayout>
+
+</ContentPage>
