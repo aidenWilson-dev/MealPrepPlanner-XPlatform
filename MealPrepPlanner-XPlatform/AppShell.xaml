@@ -11,6 +11,11 @@
     <ShellContent
         Title="Home"
         ContentTemplate="{DataTemplate view:MainPage}"
-        Route="MainPage" />
+        Route="MainPage"/>
+    
+    <ShellContent
+        Title="Recipe Book"
+        ContentTemplate="{DataTemplate view:RecipeBookPage}"
+        Route="RecipeBook"/>
 
 </Shell>

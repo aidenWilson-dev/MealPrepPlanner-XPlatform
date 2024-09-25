@@ -18,8 +18,8 @@ public partial class MainPage : ContentPage
         throw new NotImplementedException();
     }
 
-    private void RecipeBook_OnClicked(object? sender, EventArgs e)
+    private async void RecipeBook_OnClicked(object? sender, EventArgs e)
     {
-        throw new NotImplementedException();
+        await Navigation.PushAsync(new RecipeBookPage());
     }
 }
