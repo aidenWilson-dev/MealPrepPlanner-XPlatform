@@ -43,7 +43,8 @@
                 Stroke="{StaticResource White}"
                 StrokeThickness="4">
                 
-                <ListView/>
+                <ListView
+                    ItemsSource="{Binding Recipes}"/>
                 
             </Border>
             
