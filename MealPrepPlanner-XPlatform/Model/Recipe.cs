@@ -9,7 +9,7 @@ public class Recipe
     public string RecipeName {get; set;} = "Recipe Name";
 
     //Observable collection of ingredients 
-    public ObservableCollection<Ingredient> Ingredients { get; set; } = new ObservableCollection<Ingredient>();
+    public ObservableCollection<Ingredient> Ingredients { get; } = new ObservableCollection<Ingredient>();
 
     public void AddIngredient(string name, double amount, string measurement)
     {

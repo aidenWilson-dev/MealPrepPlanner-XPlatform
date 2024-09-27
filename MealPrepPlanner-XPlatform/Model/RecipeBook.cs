@@ -8,14 +8,15 @@ public class RecipeBook
     
     public RecipeBook()
     {
-        
+        LoadRecipes();
     }
 
     //Get the directory with the recipes
     public static DirectoryInfo GetRecipeBookDirectory()
     {
-        var currentDirectory = Directory.GetCurrentDirectory();
-        return Directory.CreateDirectory($"{currentDirectory}/Recipes");
+        var appDataPath = FileSystem.AppDataDirectory;
+        var returnDirectory = Directory.CreateDirectory($"{appDataPath}/Recipes");
+        return returnDirectory;
     }
 
     //Get recipe filename from recipe (as an object)

@@ -32,4 +32,11 @@ public partial class RecipeBookPage : ContentPage
     {
         throw new NotImplementedException();
     }
+
+    private void ListView_OnItemSelected(object? sender, SelectedItemChangedEventArgs e)
+    {
+        var model = (Model.Recipe)e.SelectedItem;
+        Console.WriteLine(model.RecipeName);
+        throw new NotImplementedException();
+    }
 }
