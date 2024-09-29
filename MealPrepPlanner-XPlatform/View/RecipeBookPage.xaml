@@ -3,7 +3,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:model="clr-namespace:MealPrepPlanner_XPlatform.Model"
-             x:Class="MealPrepPlanner_XPlatform.View.RecipeBookPage"
+             x:Class="MealPrepPlanner_XPlatform.View.RecipeBookPage" 
              Shell.NavBarIsVisible="False">
     <ContentPage.BindingContext>
         <model:RecipeBook/>
@@ -15,7 +15,7 @@
             <RowDefinition
                 Height="*"/>
             <RowDefinition
-                Height="4*"/>
+                Height="6*"/>
         </Grid.RowDefinitions>
         
             
@@ -45,8 +45,10 @@
                 StrokeThickness="4">
 
                 <CollectionView
+                    x:Name="RecipeView"
                     ItemsSource="{Binding Recipes}"
-                    SelectionMode="Single">
+                    SelectionMode="Single"
+                    SelectionChanged="RecipeView_OnSelectionChanged">
                     <CollectionView.ItemsLayout>
                         <LinearItemsLayout Orientation="Vertical"/>
                     </CollectionView.ItemsLayout>
