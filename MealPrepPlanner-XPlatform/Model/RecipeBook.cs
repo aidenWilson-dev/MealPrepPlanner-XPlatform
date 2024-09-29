@@ -12,7 +12,7 @@ public class RecipeBook
     }
 
     //Get the directory with the recipes
-    public static DirectoryInfo GetRecipeBookDirectory()
+    private static DirectoryInfo GetRecipeBookDirectory()
     {
         var appDataPath = FileSystem.AppDataDirectory;
         var returnDirectory = Directory.CreateDirectory($"{appDataPath}/Recipes");
@@ -20,7 +20,7 @@ public class RecipeBook
     }
 
     //Get recipe filename from recipe (as an object)
-    public static string GetRecipeFileName(Recipe recipe)
+    private static string GetRecipeFileName(Recipe recipe)
     {
         return $"{recipe.RecipeName.Replace(" ", "-")}.txt";
     }
@@ -32,7 +32,7 @@ public class RecipeBook
     }
 
     //get recipe name from file name
-    public static string GetRecipeName(FileInfo recipeFileName)
+    private static string GetRecipeName(FileInfo recipeFileName)
     {
         return recipeFileName.Name.Replace("-", " ").Replace(".txt", "");
     }
@@ -101,7 +101,10 @@ public class RecipeBook
             //Write to file
             if (fileFound)
             {
-                WriteToFile(recipe, correspondingFile);
+                if (correspondingFile != null)
+                {
+                    WriteToFile(recipe, correspondingFile);
+                }
             }
             //If file not found
             else
@@ -125,7 +128,7 @@ public class RecipeBook
     }
 
     //Write recipe contents to file
-    public static void WriteToFile(Recipe recipe, FileInfo newFile)
+    private static void WriteToFile(Recipe recipe, FileInfo newFile)
     {
         try
         {
@@ -146,7 +149,7 @@ public class RecipeBook
         }
     }
 
-    public void LoadRecipes()
+    private void LoadRecipes()
     {
         //Load directory
         var recipeBookFolder = GetRecipeBookDirectory();
