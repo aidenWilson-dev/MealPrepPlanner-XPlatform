@@ -137,7 +137,8 @@ public class RecipeBook
             //Write to file
             if (newFile.Directory != null)
             {
-                File.WriteAllText(newFile.Directory.FullName, recipeDump);
+                
+                File.WriteAllText(newFile.FullName, recipeDump);
             }
         }
         //Handle error
@@ -157,6 +158,8 @@ public class RecipeBook
         var recipeFolder = recipeBookFolder.GetFiles();
         foreach (var recipeFile in recipeFolder)
         {
+            //If the file is a .DS_Store file, skip the current iteration
+            if (recipeFile.Name == ".DS_Store") continue;
             try
             {
                 //Create a new recipe and read from recipe
