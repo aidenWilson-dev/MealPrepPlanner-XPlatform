@@ -24,8 +24,12 @@ public partial class RecipeBookPage : ContentPage
     //Event handler for add button
     private void Delete_OnClicked(object? sender, EventArgs e)
     {
+        var recipeToDelete = SelectedRecipe();
+        //Remove recipe from collection
+        GetModel().Recipes.Remove(recipeToDelete);
         //Delete recipe file
-        RecipeBook.DeleteRecipeFile(SelectedRecipe());
+        RecipeBook.DeleteRecipeFile(recipeToDelete);
+        
     }
     
     private async void Edit_OnClicked(object? sender, EventArgs e)
