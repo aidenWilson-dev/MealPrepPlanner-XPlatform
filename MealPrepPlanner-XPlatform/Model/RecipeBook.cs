@@ -8,13 +8,16 @@ public class RecipeBook
     
     public RecipeBook()
     {
+        //Load recipes into recipes collection
         LoadRecipes();
     }
 
     //Get the directory with the recipes
     private static DirectoryInfo GetRecipeBookDirectory()
     {
+        //Get the data path (app container on macOS and iOS)
         var appDataPath = FileSystem.AppDataDirectory;
+        //Create new subfolder called Recipes
         var returnDirectory = Directory.CreateDirectory($"{appDataPath}/Recipes");
         return returnDirectory;
     }
@@ -22,18 +25,14 @@ public class RecipeBook
     //Get recipe filename from recipe (as an object)
     private static string GetRecipeFileName(Recipe recipe)
     {
+        //Recipe Name -> Recipe-Name.txt
         return $"{recipe.RecipeName.Replace(" ", "-")}.txt";
-    }
-    
-    //Get recipe file name from recipe name (as a string) 
-    public static string GetRecipeFileName(string recipeName)
-    {
-        return $"{recipeName.Replace(" ", "-")}.txt";
     }
 
     //get recipe name from file name
     private static string GetRecipeName(FileInfo recipeFileName)
     {
+        //Recipe-Name.txt -> Recipe Name
         return recipeFileName.Name.Replace("-", " ").Replace(".txt", "");
     }
 
@@ -45,15 +44,13 @@ public class RecipeBook
         //For each file in recipes folder 
         foreach (var file in recipeBookFolder.GetFiles())
         {
-            if (file.Name == oldName)
-            {
-                //Create a new file with the new name
-                var newFile = new FileInfo($"{recipeBookFolder.FullName}/{newName}");
-                newFile.Create();
-                //Delete the old file
-                //The file contents can be discarded as its re-written when the page is closed
-                file.Delete();
-            }
+            if (file.Name != oldName) continue;
+            //Create a new file with the new name
+            var newFile = new FileInfo($"{recipeBookFolder.FullName}/{newName}");
+            newFile.Create();
+            //Delete the old file
+            //The file contents can be discarded as its re-written when the page is closed
+            file.Delete();
         }
     }
     
@@ -91,12 +88,10 @@ public class RecipeBook
             //Find the file with the same name as the recipe
             foreach (var file in recipeBookFolder.GetFiles())
             {
-                if (recipeFileName == file.Name)
-                {
-                    //set file found flag and corresponding file field
-                    fileFound = true;
-                    correspondingFile = file;
-                }
+                if (recipeFileName != file.Name) continue;
+                //set file found flag and corresponding file field
+                fileFound = true;
+                correspondingFile = file;
             }
             //Write to file
             if (fileFound)
@@ -109,21 +104,10 @@ public class RecipeBook
             //If file not found
             else
             {
-                try
-                {
-                    //Create new file and write to it, handling appropriate errors
-                    var newFile = new FileInfo($"{recipeBookFolder.FullName}/{recipeFileName}");
-                    newFile.Create();
-                    WriteToFile(recipe, newFile);
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine("Error occured when updating recipe file");
-                    Console.WriteLine(e);
-                    throw;
-                }
+                //Create new file and write to it
+                var newFile = new FileInfo($"{recipeBookFolder.FullName}/{recipeFileName}");
+                WriteToFile(recipe, newFile);
             }
-
         }
     }
 
@@ -137,7 +121,6 @@ public class RecipeBook
             //Write to file
             if (newFile.Directory != null)
             {
-                
                 File.WriteAllText(newFile.FullName, recipeDump);
             }
         }

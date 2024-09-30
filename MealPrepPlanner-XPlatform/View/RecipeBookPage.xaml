@@ -47,8 +47,7 @@
                 <CollectionView
                     x:Name="RecipeView"
                     ItemsSource="{Binding Recipes}"
-                    SelectionMode="Single"
-                    SelectionChanged="RecipeView_OnSelectionChanged">
+                    SelectionMode="Single">
                     <CollectionView.ItemsLayout>
                         <LinearItemsLayout Orientation="Vertical"/>
                     </CollectionView.ItemsLayout>

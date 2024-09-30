@@ -1,5 +1,6 @@
 ﻿namespace MealPrepPlanner_XPlatform.View;
 
+//Handles interaction logic for main page
 public partial class MainPage : ContentPage
 {
     public MainPage()
@@ -7,19 +8,23 @@ public partial class MainPage : ContentPage
         InitializeComponent();
     }
 
+    //Event handler for exit button
     private void Exit_OnClicked(object? sender, EventArgs e)
     {
+        //Close application
         Application.Current?.Quit(); 
     }
 
-
+    //Event handler for recipe book button
+    private async void RecipeBook_OnClicked(object? sender, EventArgs e)
+    {
+        //Navigate to recipe book page
+        await Navigation.PushAsync(new RecipeBookPage());
+    }
+    
+    //Event handler for meal planner button
     private void MealPlanner_OnClicked(object? sender, EventArgs e)
     {
         throw new NotImplementedException();
-    }
-
-    private async void RecipeBook_OnClicked(object? sender, EventArgs e)
-    {
-        await Navigation.PushAsync(new RecipeBookPage());
     }
 }
