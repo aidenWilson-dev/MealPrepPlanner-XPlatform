@@ -24,22 +24,32 @@ public partial class AddEditRecipePage : ContentPage
         
     }
 
-    private void Add_OnClicked(object? sender, EventArgs e)
+    //Event handler for add button
+    private async void Add_OnClicked(object? sender, EventArgs e)
     {
-        throw new NotImplementedException();
+        //Create the recipe
+        var newIngredient= new Ingredient("New Ingredient", 0, "Units");
+        //Add recipe to recipe book
+        _recipe.Ingredients.Add(newIngredient);
+        //Navigate to add recipe page
+        await Navigation.PushAsync(new AddEditIngredientPage(newIngredient));
     }
 
+    //Event handler for delete button
     private void Delete_OnClicked(object? sender, EventArgs e)
     {
         var selectedIngredient = SelectedIngredient();
         _recipe.Ingredients.Remove(selectedIngredient);
     }
-
-    private void Edit_OnClicked(object? sender, EventArgs e)
+    
+    //Event handler for edit button
+    private async void Edit_OnClicked(object? sender, EventArgs e)
     {
-        throw new NotImplementedException();
+        //Navigate to the edit ingredient page supplying the selected item in list
+        await Navigation.PushAsync(new AddEditIngredientPage(SelectedIngredient()));
     }
-
+    
+    //Event handler for Save button
     private async void Save_OnClicked(object? sender, EventArgs e)
     {
         var oldName = _recipe.RecipeName;
@@ -50,12 +60,6 @@ public partial class AddEditRecipePage : ContentPage
             _recipe.RecipeName = newName;
         }
         await Navigation.PopAsync();
-    }
-    
-    private void OnEntryTextChanged(object sender, EventArgs e)
-    {
-        var newRecipeName = ((Entry)sender).Text;
-        _recipe.RecipeName = newRecipeName;
     }
     
     private Ingredient SelectedIngredient()

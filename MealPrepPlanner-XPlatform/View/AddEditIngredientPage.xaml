@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:model="clr-namespace:MealPrepPlanner_XPlatform.Model"
+             x:Class="MealPrepPlanner_XPlatform.View.AddEditIngredientPage"
+             Shell.NavBarIsVisible="False">
+    
+    <Grid 
+        Padding="50"
+        RowSpacing="10">
+        <Grid.RowDefinitions>
+            <RowDefinition
+                Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition
+                Width="*"/>
+        </Grid.ColumnDefinitions>
+        
+        <VerticalStackLayout
+            Spacing="50">
+            <Label
+                Text="Edit Ingredient"
+                FontSize="50"
+                Style="{StaticResource Headline}"/>
+            <Label
+                Text="Ingredient Name"
+                Style="{StaticResource SubHeadline}"/>
+            <Entry 
+                x:Name="IngredientNameEntry"
+                Placeholder="Ingredient Name"
+                FontSize="50"
+                Style="{StaticResource Headline}"/>
+            <Label
+                Text="Amount"
+                Style="{StaticResource SubHeadline}"/>
+            <Entry 
+                x:Name="IngredientAmountEntry"
+                Placeholder="Ingredient Amount"
+                FontSize="50"
+                Style="{StaticResource Headline}"/>
+            <Picker
+                x:Name="MeasurementPicker"
+                x:DataType="model:Ingredient"
+                HorizontalTextAlignment="Center"
+                FontSize="50"/>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition
+                        Height="*"/>
+                </Grid.RowDefinitions>
+                <Button
+                    x:Name="Save"
+                    Text="Save"
+                    Clicked="Save_OnClicked"
+                    HeightRequest="100"/>  
+            </Grid>
+        </VerticalStackLayout>
+    
+    </Grid>
+        
+</ContentPage>

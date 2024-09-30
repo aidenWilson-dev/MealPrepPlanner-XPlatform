@@ -29,7 +29,6 @@ public partial class RecipeBookPage : ContentPage
         GetModel().Recipes.Remove(recipeToDelete);
         //Delete recipe file
         RecipeBook.DeleteRecipeFile(recipeToDelete);
-        
     }
     
     private async void Edit_OnClicked(object? sender, EventArgs e)
@@ -52,9 +51,10 @@ public partial class RecipeBookPage : ContentPage
         var model = (Recipe)RecipeView.SelectedItem;
         return model;
     }
-
+    
     private RecipeBook GetModel()
     {
+        //Return recipe book model
         return (RecipeBook)BindingContext;
     }
 

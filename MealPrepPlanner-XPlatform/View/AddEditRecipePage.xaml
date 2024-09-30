@@ -19,8 +19,7 @@
             x:Name="RecipeNameEntry"
             Placeholder="Recipe Name"
             FontSize="50"
-            Style="{StaticResource Headline}"
-            TextChanged="OnEntryTextChanged"/>
+            Style="{StaticResource Headline}"/>
         
         <Grid
             Grid.Row="1"

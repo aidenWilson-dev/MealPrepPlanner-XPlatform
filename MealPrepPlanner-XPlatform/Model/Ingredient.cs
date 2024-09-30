@@ -3,14 +3,24 @@ using System.ComponentModel;
 namespace MealPrepPlanner_XPlatform.Model;
 
 //Data class for ingredient
-public class Ingredient(string name, double amount, string measurement)
+public class Ingredient(string name, double amount, string measurement) : INotifyPropertyChanged
 {
     //Property changed event
     public event PropertyChangedEventHandler? PropertyChanged;
     
+    //List of measurement types 
+    public readonly List<string> MeasurementTypes =
+    [
+        "Units",
+        "Cups",
+        "Tbsp",
+        "Tsp",
+        "Grams"
+    ];
+    
     //Property for ingredient name
-    private string? _ingredientName = name;
-    public string? IngredientName
+    private string _ingredientName = name;
+    public string IngredientName
     {
         //Return ingredient name
         get => _ingredientName;
@@ -23,8 +33,8 @@ public class Ingredient(string name, double amount, string measurement)
     }
     
     //Property for ingredient amount
-    private double? _ingredientAmount = amount;
-    public double? IngredientAmount
+    private double _ingredientAmount = amount;
+    public double IngredientAmount
     {
         //Return ingredient name
         get => _ingredientAmount;
@@ -32,21 +42,22 @@ public class Ingredient(string name, double amount, string measurement)
         {
             //Set ingredient amount and notify property changed
             _ingredientAmount = value;
-            OnPropertyChanged(nameof(IngredientName));
+            OnPropertyChanged(nameof(IngredientAmount));
         }
     }
 
     //Property for amount measurement
-    private string? _amountMeasurement = measurement;
-    public string? AmountMeasurement
+    private string _amountMeasurement = measurement;
+    public string AmountMeasurement
     {
         //Return ingredient name
         get => _amountMeasurement;
         set
         {
+            if (!MeasurementTypes.Contains(value)) return;
             //Set amount measurement and notify property changed
             _amountMeasurement = value;
-            OnPropertyChanged(nameof(IngredientName));
+            OnPropertyChanged(nameof(AmountMeasurement));
         }
     }
     
