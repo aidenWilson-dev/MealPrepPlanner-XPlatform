@@ -6,7 +6,7 @@
     xmlns:local="clr-namespace:MealPrepPlanner_XPlatform"
     xmlns:view="clr-namespace:MealPrepPlanner_XPlatform.View"
     Shell.FlyoutBehavior="Disabled"
-    Title="MealPrepPlanner_XPlatform">
+    Title="Meal Prep Planner">
 
     <ShellContent
         Title="Home"
