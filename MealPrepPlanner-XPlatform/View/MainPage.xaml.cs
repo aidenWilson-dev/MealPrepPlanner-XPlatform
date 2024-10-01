@@ -6,6 +6,11 @@ public partial class MainPage : ContentPage
     public MainPage()
     {
         InitializeComponent();
+        //Exit button is not needed on IOS, so if the platform is ios, hide it
+        if (DeviceInfo.Platform == DevicePlatform.iOS)
+        {
+            Exit.IsVisible = false;
+        }
     }
 
     //Event handler for exit button

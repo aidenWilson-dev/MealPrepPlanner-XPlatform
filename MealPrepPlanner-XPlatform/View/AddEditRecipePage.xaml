@@ -6,125 +6,106 @@
              x:Class="MealPrepPlanner_XPlatform.View.AddEditRecipePage"
              Shell.NavBarIsVisible="False">
     <Grid
-        Padding="50"
+        Padding="30"
         RowSpacing="10">
         <Grid.RowDefinitions>
-            <RowDefinition
-                Height="*"/>
-            <RowDefinition
-                Height="6*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="6*"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-
-        <Entry 
+        <Entry
             x:Name="RecipeNameEntry"
             Placeholder="Recipe Name"
             FontSize="50"
             Style="{StaticResource Headline}"/>
-        
-        <Grid
+        <Border
             Grid.Row="1"
-            ColumnSpacing="20">
-            
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition
-                    Width="*"/>
-                <ColumnDefinition
-                    Width="*"/>
-            </Grid.ColumnDefinitions>
-            
-            <Grid.RowDefinitions>
-                <RowDefinition
-                    Height="*"/>
-            </Grid.RowDefinitions>
-            
-            <Border
-                Stroke="{StaticResource White}"
-                StrokeThickness="4">
+            Stroke="{StaticResource White}"
+            StrokeThickness="4">
+            <CollectionView
+                x:Name="IngredientView"
+                x:DataType="model:Recipe"
+                ItemsSource="{Binding Ingredients}"
+                SelectionMode="Single">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border
+                            Stroke="{StaticResource White}"
+                            StrokeThickness="4">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition
+                                        Width="*"/>
+                                    <ColumnDefinition
+                                        Width="*"/>
+                                    <ColumnDefinition
+                                        Width="*"/>
+                                </Grid.ColumnDefinitions>
     
-                <CollectionView
-                    x:Name="IngredientView"
-                    x:DataType="model:Recipe"
-                    ItemsSource="{Binding Ingredients}"
-                    SelectionMode="Single">
-                    <CollectionView.ItemsLayout>
-                        <LinearItemsLayout Orientation="Vertical"/>
-                    </CollectionView.ItemsLayout>
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate>
-                            <Border
-                                Stroke="{StaticResource White}"
-                                StrokeThickness="4">
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition
-                                            Width="*"/>
-                                        <ColumnDefinition
-                                            Width="*"/>
-                                        <ColumnDefinition
-                                            Width="*"/>
-                                    </Grid.ColumnDefinitions>
-                                    
-                                    <Label Text="{Binding IngredientName}"
-                                           Style="{StaticResource SubHeadline}"
-                                           Grid.Column="0"
-                                           VerticalTextAlignment="Center"
-                                           x:DataType="model:Ingredient"/>
-                                    
-                                    <Label Text="{Binding IngredientAmount}"
-                                           Style="{StaticResource SubHeadline}"
-                                           Grid.Column="1"
-                                           VerticalTextAlignment="Center"
-                                           x:DataType="model:Ingredient"/>
-                                    
-                                    <Label Text="{Binding AmountMeasurement}"
-                                           Style="{StaticResource SubHeadline}"
-                                           Grid.Column="2"
-                                           VerticalTextAlignment="Center"
-                                           x:DataType="model:Ingredient"/>
-                                </Grid>
-                            </Border>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
-            </Border>
+                                <Label Text="{Binding IngredientName}"
+                                       Style="{StaticResource SubHeadline}"
+                                       Grid.Column="0"
+                                       VerticalTextAlignment="Center"
+                                       x:DataType="model:Ingredient"/>
+    
+                                <Label Text="{Binding IngredientAmount}"
+                                       Style="{StaticResource SubHeadline}"
+                                       Grid.Column="1"
+                                       VerticalTextAlignment="Center"
+                                       x:DataType="model:Ingredient"/>
+    
+                                <Label Text="{Binding AmountMeasurement}"
+                                       Style="{StaticResource SubHeadline}"
+                                       Grid.Column="2"
+                                       VerticalTextAlignment="Center"
+                                       x:DataType="model:Ingredient"/>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Border>
         <Grid 
-            Grid.Column="1"
-            RowSpacing="50">
+            Grid.Row="2"
+            RowSpacing="10"
+            ColumnSpacing="10">
             <Grid.RowDefinitions>
-                <RowDefinition
-                    Height="*"/>
-                <RowDefinition
-                    Height="*"/>
-                <RowDefinition
-                    Height="*"/>
-                <RowDefinition
-                    Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
             <Button
                 x:Name="Add"
                 Text="Add"
                 Clicked="Add_OnClicked"
-                Grid.Row="0"/>
-        
-            <Button
-                x:Name="Delete"
-                Text="Delete"
-                Clicked="Delete_OnClicked"
-                Grid.Row="1"/>
-    
+                Grid.Row="0"
+                Grid.Column="0"/>
+            
             <Button
                 x:Name="Edit"
                 Text="Edit"
                 Clicked="Edit_OnClicked"
-                Grid.Row="2"/>
+                Grid.Row="0"
+                Grid.Column="1"/>
     
+            <Button
+                x:Name="Delete"
+                Text="Delete"
+                Clicked="Delete_OnClicked"
+                Grid.Row="1"
+                Grid.Column="0"/>
             <Button
                 x:Name="Save"
                 Text="Save"
                 Clicked="Save_OnClicked"
-                Grid.Row="3"/>
+                Grid.Row="1"
+                Grid.Column="1"/>
         </Grid>
-        </Grid>
-    </Grid>    
+    </Grid>
 </ContentPage>
