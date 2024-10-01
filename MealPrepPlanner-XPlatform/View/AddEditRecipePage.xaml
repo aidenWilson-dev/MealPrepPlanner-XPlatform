@@ -82,27 +82,27 @@
             </Grid.ColumnDefinitions>
             <Button
                 x:Name="Add"
-                Text="Add"
+                Text="Add Ingredient"
                 Clicked="Add_OnClicked"
                 Grid.Row="0"
                 Grid.Column="0"/>
             
             <Button
                 x:Name="Edit"
-                Text="Edit"
+                Text="Edit Ingredient"
                 Clicked="Edit_OnClicked"
                 Grid.Row="0"
                 Grid.Column="1"/>
     
             <Button
                 x:Name="Delete"
-                Text="Delete"
+                Text="Delete Ingredient"
                 Clicked="Delete_OnClicked"
                 Grid.Row="1"
                 Grid.Column="0"/>
             <Button
                 x:Name="Save"
-                Text="Save"
+                Text="Save Ingredient"
                 Clicked="Save_OnClicked"
                 Grid.Row="1"
                 Grid.Column="1"/>

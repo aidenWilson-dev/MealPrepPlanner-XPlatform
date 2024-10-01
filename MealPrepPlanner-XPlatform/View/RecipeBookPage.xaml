@@ -35,9 +35,26 @@
                     <DataTemplate>
                         <Border
                             Stroke="{StaticResource White}"
-                            StrokeThickness="2">
-                            <Label Text="{Binding RecipeName}"
-                                   Style="{StaticResource SubHeadline}"/>
+                            StrokeThickness="2"
+                            Margin="10">
+                            <Grid
+                                Margin="10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Label Text="{Binding RecipeName}"
+                                       Style="{StaticResource SubHeadline}"
+                                       VerticalTextAlignment="Center"
+                                       HorizontalOptions="Start"
+                                       Grid.Column="0"/>
+                                <Button Text="View"
+                                        x:Name="ViewRecipe"
+                                        Clicked="ViewRecipe_OnClicked"
+                                        HorizontalOptions="End"
+                                        HeightRequest="44"
+                                        Grid.Column="1"/>
+                            </Grid>
                         </Border>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
@@ -57,21 +74,21 @@
             </Grid.ColumnDefinitions>
            <Button
                x:Name="Add"
-               Text="Add"
+               Text="Add Recipe"
                Clicked="Add_OnClicked"
                Grid.Row="0"
                Grid.Column="0"/>
            
            <Button
                x:Name="Edit"
-               Text="Edit"
+               Text="Edit Recipe"
                Clicked="Edit_OnClicked"
                Grid.Row="0"
                Grid.Column="1"/>
            
            <Button
                x:Name="Delete"
-               Text="Delete"
+               Text="Delete Recipe"
                Clicked="Delete_OnClicked"
                Grid.Row="1"
                Grid.Column="0"/>

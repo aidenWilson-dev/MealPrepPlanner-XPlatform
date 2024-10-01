@@ -8,6 +8,12 @@ public partial class RecipeBookPage : ContentPage
     public RecipeBookPage()
     {
         InitializeComponent();
+        //Font size 22 is too big on ios, so need to make it smaller 
+        if (DeviceInfo.Platform != DevicePlatform.iOS) return;
+        Add.FontSize = 20;
+        Edit.FontSize = 20;
+        Delete.FontSize = 20;
+        Close.FontSize = 20;
     }
 
     //Event handler for add button
@@ -58,4 +64,8 @@ public partial class RecipeBookPage : ContentPage
         return (RecipeBook)BindingContext;
     }
 
+    private void ViewRecipe_OnClicked(object? sender, EventArgs e)
+    {
+        throw new NotImplementedException();
+    }
 }
