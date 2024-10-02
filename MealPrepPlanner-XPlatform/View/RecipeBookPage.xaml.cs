@@ -31,6 +31,7 @@ public partial class RecipeBookPage : ContentPage
     private void Delete_OnClicked(object? sender, EventArgs e)
     {
         var recipeToDelete = SelectedRecipe();
+        if (recipeToDelete == null) return;
         //Remove recipe from collection
         GetModel().Recipes.Remove(recipeToDelete);
         //Delete recipe file
@@ -40,7 +41,10 @@ public partial class RecipeBookPage : ContentPage
     private async void Edit_OnClicked(object? sender, EventArgs e)
     {
         //Navigate to the edit recipe page supplying the selected item in list
-        await Navigation.PushAsync(new AddEditRecipePage(SelectedRecipe()));
+        //Navigate to the recipe view supplying the selected item in list
+        var selectedModel = SelectedRecipe();
+        if (selectedModel == null) return;
+        await Navigation.PushAsync(new AddEditRecipePage(selectedModel));
     }
     
     private async void Close_OnClicked(object? sender, EventArgs e)
@@ -51,7 +55,7 @@ public partial class RecipeBookPage : ContentPage
         await Navigation.PopAsync();
     }
     
-    private Recipe SelectedRecipe()
+    private Recipe? SelectedRecipe()
     {
         //Return the page that is selected in the list view
         var model = (Recipe)RecipeView.SelectedItem;
@@ -64,8 +68,11 @@ public partial class RecipeBookPage : ContentPage
         return (RecipeBook)BindingContext;
     }
 
-    private void ViewRecipe_OnClicked(object? sender, EventArgs e)
+    private async void ViewRecipe_OnClicked(object? sender, EventArgs e)
     {
-        throw new NotImplementedException();
+        //Navigate to the recipe view supplying the selected item in list
+        var selectedModel = SelectedRecipe();
+        if (selectedModel == null) return;
+        await Navigation.PushAsync(new RecipePage(selectedModel));
     }
 }
