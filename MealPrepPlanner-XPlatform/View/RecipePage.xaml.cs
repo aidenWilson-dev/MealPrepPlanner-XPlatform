@@ -8,12 +8,14 @@ public partial class RecipePage : ContentPage
 {
     public RecipePage(Recipe recipeToView)
     {
+        //Set binding context
         InitializeComponent();
         BindingContext = recipeToView;
     }
 
     private async void Close_OnClicked(object? sender, EventArgs e)
     {
+        //Close page
         await Navigation.PopAsync();
     }
 }

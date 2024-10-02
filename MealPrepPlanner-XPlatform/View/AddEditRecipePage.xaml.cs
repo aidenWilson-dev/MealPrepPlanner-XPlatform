@@ -21,12 +21,6 @@ public partial class AddEditRecipePage : ContentPage
          * and binds the page to that, in this case we want to pass in an already created object
         */
         BindingContext = _recipe;
-        //Font size 22 is too big on ios, so need to make it smaller 
-        if (DeviceInfo.Platform != DevicePlatform.iOS) return;
-        Add.FontSize = 16;
-        Edit.FontSize = 16;
-        Delete.FontSize = 16;
-        Save.FontSize = 16;
     }
 
     //Event handler for add button

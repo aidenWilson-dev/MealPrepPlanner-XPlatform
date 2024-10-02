@@ -84,6 +84,7 @@
                 x:Name="Add"
                 Text="Add Ingredient"
                 Clicked="Add_OnClicked"
+                FontSize="{OnPlatform iOS=16}"
                 Grid.Row="0"
                 Grid.Column="0"/>
             
@@ -91,6 +92,7 @@
                 x:Name="Edit"
                 Text="Edit Ingredient"
                 Clicked="Edit_OnClicked"
+                FontSize="{OnPlatform iOS=16}"
                 Grid.Row="0"
                 Grid.Column="1"/>
     
@@ -98,12 +100,14 @@
                 x:Name="Delete"
                 Text="Delete Ingredient"
                 Clicked="Delete_OnClicked"
+                FontSize="{OnPlatform iOS=16}"
                 Grid.Row="1"
                 Grid.Column="0"/>
             <Button
                 x:Name="Save"
                 Text="Save Ingredient"
                 Clicked="Save_OnClicked"
+                FontSize="{OnPlatform iOS=16}"
                 Grid.Row="1"
                 Grid.Column="1"/>
         </Grid>

@@ -28,8 +28,9 @@ public partial class MainPage : ContentPage
     }
     
     //Event handler for meal planner button
-    private void MealPlanner_OnClicked(object? sender, EventArgs e)
+    private async void MealPlanner_OnClicked(object? sender, EventArgs e)
     {
-        throw new NotImplementedException();
+        //Navigate to recipe book page
+        await Navigation.PushAsync(new DaySelectorPage());
     }
 }
