@@ -62,7 +62,7 @@ public partial class RecipeBookPage : ContentPage
         return model;
     }
     
-    private RecipeBook GetModel()
+    public RecipeBook GetModel()
     {
         //Return recipe book model
         return (RecipeBook)BindingContext;

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:model="clr-namespace:MealPrepPlanner_XPlatform.Model"
+             x:Class="MealPrepPlanner_XPlatform.View.MealSelectorPage"
+             Shell.NavBarIsVisible="False">
+   
+       <Grid 
+           Padding="30"
+           RowSpacing="30">
+           <Grid.RowDefinitions>
+               <RowDefinition Height="2*"/>
+               <RowDefinition Height="6*"/>
+               <RowDefinition Height="*"/>
+           </Grid.RowDefinitions>
+           <VerticalStackLayout
+                Spacing="{OnPlatform 50, iOS=15}"
+                Grid.Row="0">
+                <Label 
+                    Text="Recipe Selector"
+                    FontSize="{OnPlatform 50, iOS=40}"
+                    Style="{StaticResource Headline}"/>
+                <Label 
+                    Text="Select the recipes you want to prep this week."
+                    Style="{StaticResource SubHeadline}"/>
+           </VerticalStackLayout>
+            <Border
+                Stroke="{StaticResource White}"
+                StrokeThickness="4"
+                Grid.Row="1">
+                <CollectionView
+                    x:Name="RecipeView"
+                    x:DataType="model:RecipeBook"
+                    ItemsSource="{Binding Recipes}"
+                    SelectionMode="Multiple">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout Orientation="Vertical"/>
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Border
+                                Stroke="{StaticResource White}"
+                                StrokeThickness="2"
+                                Margin="10">
+                                <Grid
+                                    Margin="10"
+                                    x:DataType="model:Recipe">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Text="{Binding RecipeName}"
+                                           Style="{StaticResource SubHeadline}"
+                                           VerticalTextAlignment="Center"
+                                           HorizontalOptions="Start"
+                                           Grid.Column="0"/>
+                                    <Button Text="View"
+                                            x:Name="ViewRecipe"
+                                            Clicked="ViewRecipe_OnClicked"
+                                            HorizontalOptions="End"
+                                            HeightRequest="44"
+                                            Grid.Column="1"/>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </Border>
+            <HorizontalStackLayout
+                Spacing="25"
+                HorizontalOptions="Center"
+                Grid.Row="2">
+                <Button
+                    x:Name="Close"
+                    Text="Close"
+                    Clicked="Close_OnClicked"
+                    FontSize="{OnPlatform 40, iOS=20}"/>
+                <Button
+                    x:Name="Next"
+                    Text="Next"
+                    Clicked="Next_OnClicked"
+                    FontSize="{OnPlatform 40, iOS=20}"/>
+            </HorizontalStackLayout>
+       </Grid> 
+</ContentPage>

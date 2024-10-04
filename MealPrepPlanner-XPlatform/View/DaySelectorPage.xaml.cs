@@ -1,3 +1,6 @@
+using System.Collections.ObjectModel;
+using MealPrepPlanner_XPlatform.Model;
+
 namespace MealPrepPlanner_XPlatform.View;
 
 //Handles interaction logic for day selector page
@@ -5,6 +8,10 @@ public partial class DaySelectorPage : ContentPage
 {
     //Amount of days selected to be skipped
     private int _daysSelected = 0;
+    private const int MealsPerWeek = 21;
+
+    //Recipe list that needs to be given to the recipe selector
+    public RecipeBook? RecipeBook;
     
     public DaySelectorPage()
     {
@@ -38,11 +45,18 @@ public partial class DaySelectorPage : ContentPage
 
     private async void Close_OnClicked(object? sender, EventArgs e)
     {
+        //Close page
         await Navigation.PopAsync();
     }
 
-    private void Next_OnClicked(object? sender, EventArgs e)
+    private async void Next_OnClicked(object? sender, EventArgs e)
     {
-        throw new NotImplementedException();
+        //Calculate the amount of meals needed
+        var mealsNeeded = MealsPerWeek - _daysSelected;
+        if (RecipeBook != null)
+        {
+            //Open meal selector page
+            await Navigation.PushAsync(new MealSelectorPage(RecipeBook, mealsNeeded));
+        }
     }
 }
