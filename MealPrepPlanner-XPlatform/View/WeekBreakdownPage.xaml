@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:model="clr-namespace:MealPrepPlanner_XPlatform.Model"
+             x:Class="MealPrepPlanner_XPlatform.View.WeekBreakdownPage"
+             Shell.NavBarIsVisible="False">
+    <Grid 
+           Padding="30"
+           RowSpacing="30">
+           <Grid.RowDefinitions>
+               <RowDefinition Height="2*"/>
+               <RowDefinition Height="6*"/>
+               <RowDefinition Height="*"/>
+           </Grid.RowDefinitions>
+           <VerticalStackLayout
+                Spacing="{OnPlatform 50, iOS=15}"
+                Grid.Row="0">
+                <Label 
+                    Text="Week Breakdown"
+                    FontSize="{OnPlatform 50, iOS=40}"
+                    Style="{StaticResource Headline}"/>
+                <Label 
+                    Text="This is the total amount of each ingredient you will need this week."
+                    Style="{StaticResource SubHeadline}"/>
+           </VerticalStackLayout>
+            <Border
+                Stroke="{StaticResource White}"
+                StrokeThickness="4"
+                Grid.Row="1">
+                <CollectionView
+                x:Name="IngredientView"
+                x:DataType="model:Recipe"
+                ItemsSource="{Binding Ingredients}"
+                SelectionMode="Single">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border
+                            Stroke="{StaticResource White}"
+                            StrokeThickness="4">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition
+                                        Width="*"/>
+                                    <ColumnDefinition
+                                        Width="*"/>
+                                    <ColumnDefinition
+                                        Width="*"/>
+                                </Grid.ColumnDefinitions>
+    
+                                <Label Text="{Binding IngredientName}"
+                                       Style="{StaticResource SubHeadline}"
+                                       Grid.Column="0"
+                                       VerticalTextAlignment="Center"
+                                       x:DataType="model:Ingredient"/>
+    
+                                <Label Text="{Binding IngredientAmount}"
+                                       Style="{StaticResource SubHeadline}"
+                                       Grid.Column="1"
+                                       VerticalTextAlignment="Center"
+                                       x:DataType="model:Ingredient"/>
+    
+                                <Label Text="{Binding AmountMeasurement}"
+                                       Style="{StaticResource SubHeadline}"
+                                       Grid.Column="2"
+                                       VerticalTextAlignment="Center"
+                                       x:DataType="model:Ingredient"/>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            </Border>
+            <HorizontalStackLayout
+                Spacing="25"
+                HorizontalOptions="Center"
+                Grid.Row="2">
+                <Button
+                    x:Name="Close"
+                    Text="Close"
+                    Clicked="Close_OnClicked"
+                    FontSize="{OnPlatform 40, iOS=20}"/>
+            </HorizontalStackLayout>
+       </Grid> 
+    
+</ContentPage>

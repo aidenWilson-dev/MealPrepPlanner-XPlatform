@@ -8,12 +8,12 @@ public partial class MealSelectorPage : ContentPage
     //Amount of meals selected
     private int _mealsSelected;
     //recipe book 
-    public RecipeBook RecipeBook;
+    private RecipeBook _recipeBook;
     
     public MealSelectorPage(RecipeBook recipeBook, int mealsNeeded)
     {
         InitializeComponent();
-        RecipeBook = recipeBook;
+        _recipeBook = recipeBook;
         _mealsSelected = mealsNeeded;
         //Set binding context to recipe book
         BindingContext = recipeBook;
@@ -33,9 +33,11 @@ public partial class MealSelectorPage : ContentPage
         await Navigation.PopAsync();
     }
 
-    private void Next_OnClicked(object? sender, EventArgs e)
+    private async void Next_OnClicked(object? sender, EventArgs e)
     {
-        throw new NotImplementedException();
+        var mealsNeeded = 21 - _mealsSelected;
+        Console.WriteLine(mealsNeeded);
+        await Navigation.PushAsync(new WeekBreakdownPage(_recipeBook, mealsNeeded));
     }
     
     private Recipe? SelectedRecipe()
