@@ -6,15 +6,12 @@ namespace MealPrepPlanner_XPlatform.View;
 public partial class MealSelectorPage : ContentPage
 {
     //Amount of meals selected
-    private int _mealsSelected;
-    //recipe book 
-    private RecipeBook _recipeBook;
-    
+    private readonly int _mealsNeeded;
+
     public MealSelectorPage(RecipeBook recipeBook, int mealsNeeded)
     {
         InitializeComponent();
-        _recipeBook = recipeBook;
-        _mealsSelected = mealsNeeded;
+        _mealsNeeded = mealsNeeded;
         //Set binding context to recipe book
         BindingContext = recipeBook;
     }
@@ -22,9 +19,13 @@ public partial class MealSelectorPage : ContentPage
     private async void ViewRecipe_OnClicked(object? sender, EventArgs e)
     {
         //Navigate to the recipe view supplying the selected item in list
-        var selectedModel = SelectedRecipe();
-        if (selectedModel == null) return;
+        var selectedRecipes = SelectedRecipes();
+        //Check if the selected items is not null and the length is greater than or equal to 1
+        if (selectedRecipes is not { Count: >= 1 }) return;
+        //Get the model
+        var selectedModel = selectedRecipes[0];
         await Navigation.PushAsync(new RecipePage(selectedModel));
+
     }
 
     private async void Close_OnClicked(object? sender, EventArgs e)
@@ -35,21 +36,19 @@ public partial class MealSelectorPage : ContentPage
 
     private async void Next_OnClicked(object? sender, EventArgs e)
     {
-        var mealsNeeded = 21 - _mealsSelected;
-        Console.WriteLine(mealsNeeded);
-        await Navigation.PushAsync(new WeekBreakdownPage(_recipeBook, mealsNeeded));
+        //Get selected recipes
+        var selectedRecipes = SelectedRecipes();
+        //Check if the selected items is not null and the length is greater than or equal to 1
+        if (selectedRecipes is not { Count: >= 1 }) return;
+        //Open week breakdown page 
+        await Navigation.PushAsync(new WeekBreakdownPage(selectedRecipes, _mealsNeeded));
     }
     
-    private Recipe? SelectedRecipe()
+    private List<Recipe> SelectedRecipes()
     {
         //Since this recipe view is multi-select, multiple items may be selected
         var selectedItems = RecipeView.SelectedItems;
-        //If there is only one selected item return that recipe
-        if (selectedItems.Count == 1)
-        {
-            return (Recipe)selectedItems[0];
-        }
-        //Otherwise return null
-        return null;
+        //Return selected items as a list of recipes
+        return selectedItems.Cast<Recipe>().ToList();
     }
 }

@@ -5,13 +5,13 @@ namespace MealPrepPlanner_XPlatform.View;
 public partial class WeekBreakdownPage : ContentPage
 {
     
-    private RecipeBook _recipeBook;
+    private IList<Recipe>? _selectedRecipes;
     private int _mealsNeeded;
     
-    public WeekBreakdownPage(RecipeBook recipeBook, int mealsNeeded)
+    public WeekBreakdownPage(IList<Recipe>? selectedRecipes, int mealsNeeded)
     {
         InitializeComponent();
-        _recipeBook = recipeBook;
+        _selectedRecipes = selectedRecipes;
         _mealsNeeded = mealsNeeded;
         //LoadIngredientsView();
     }
