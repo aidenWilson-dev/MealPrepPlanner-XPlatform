@@ -1,3 +1,4 @@
+using System.Globalization;
 using MealPrepPlanner_XPlatform.Model;
 
 namespace MealPrepPlanner_XPlatform.View;
@@ -11,6 +12,10 @@ public partial class RecipePage : ContentPage
         //Set binding context
         InitializeComponent();
         BindingContext = recipeToView;
+        CaloriesLabel.Text = recipeToView.RecipeMacros.Cals.ToString();
+        CarbsLabel.Text = recipeToView.RecipeMacros.Carbs.ToString(CultureInfo.InvariantCulture);
+        ProteinLabel.Text = recipeToView.RecipeMacros.Protein.ToString(CultureInfo.InvariantCulture);
+        FatLabel.Text = recipeToView.RecipeMacros.Fat.ToString(CultureInfo.InvariantCulture);
     }
 
     private async void Close_OnClicked(object? sender, EventArgs e)
