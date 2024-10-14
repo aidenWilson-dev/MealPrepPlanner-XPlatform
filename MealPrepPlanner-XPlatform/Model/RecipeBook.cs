@@ -148,16 +148,33 @@ public class RecipeBook
                 //Create a new recipe and read from recipe
                 var newRecipe = new Recipe();
                 //Read all lines in from file
-                foreach (var ingredientLine in File.ReadAllLines(recipeFile.FullName))
+                var recipeFileLines = File.ReadAllLines(recipeFile.FullName);
+                for (var i = 0; i < recipeFileLines.Length; i++)
                 {
+                    var ingredientLine = recipeFileLines[i];
                     //Split line at separator
                     var parts = ingredientLine.Split(":");
-                    //Get parts
-                    var ingredientName = parts[0];
-                    var ingredientAmount = int.Parse(parts[1]);
-                    var amountMeasurement = parts[2];
-                    //Add ingredient to recipe
-                    newRecipe.AddIngredient(ingredientName, ingredientAmount, amountMeasurement);
+                    //If we are on the first line of the file 
+                    //Which is where the macros are stored
+                    if (i == 0)
+                    {
+                        //Get macros
+                        var cals = int.Parse(parts[0]);
+                        var carbs = double.Parse(parts[1]);
+                        var protein = double.Parse(parts[2]);
+                        var fat = double.Parse(parts[3]);
+                        //Add macros to recipe
+                        newRecipe.AddMacros(cals, carbs, protein, fat);
+                    }
+                    else
+                    {
+                        //Get parts
+                        var ingredientName = parts[0];
+                        var ingredientAmount = int.Parse(parts[1]);
+                        var amountMeasurement = parts[2];
+                        //Add ingredient to recipe
+                        newRecipe.AddIngredient(ingredientName, ingredientAmount, amountMeasurement);
+                    }
                 }
                 //convert recipe filename to recipe name
                 var recipeName = GetRecipeName(recipeFile);

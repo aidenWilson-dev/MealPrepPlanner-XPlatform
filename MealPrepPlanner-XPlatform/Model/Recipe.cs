@@ -1,6 +1,7 @@
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Text;
+using Microsoft.Extensions.Primitives;
 
 namespace MealPrepPlanner_XPlatform.Model;
 
@@ -8,6 +9,12 @@ public class Recipe : INotifyPropertyChanged
 {
     //Property changed event
     public event PropertyChangedEventHandler? PropertyChanged;
+    
+    //Observable collection of ingredients 
+    public ObservableCollection<Ingredient> Ingredients { get; } = new ObservableCollection<Ingredient>();
+    
+    //Macros object associated with recipe, default is 0 for each
+    public Macros RecipeMacros = new Macros(0, 0, 0, 0);
     
     //Recipe name property, Recipe Name is default value
     private string _recipeName = "Recipe name";
@@ -23,21 +30,27 @@ public class Recipe : INotifyPropertyChanged
         }
     }
 
-    //Observable collection of ingredients 
-    public ObservableCollection<Ingredient> Ingredients { get; } = new ObservableCollection<Ingredient>();
-
     //Add new ingredient to ObservableCollection
     public void AddIngredient(string name, double amount, string measurement)
     {
         var newIngredient = new Ingredient(name, amount, measurement);
         Ingredients.Add(newIngredient);
     }
+    
+    //Add macros
+    public void AddMacros(int cals, double carbs, double protein, double fat)
+    {
+        RecipeMacros.Cals = cals;
+        RecipeMacros.Carbs = carbs;
+        RecipeMacros.Protein = protein;
+        RecipeMacros.Fat = fat;
+    }
 
     public string IngredientDump()
     {
         //Output string builder
         var ingredientDump = new StringBuilder();
-
+        ingredientDump.Append(RecipeMacros.MacrosDump());
         //For each ingredient, add a new line to the dump in the form 
         //Ingredient:Amount:Measurement
         foreach (var ingredient in Ingredients)
