@@ -13,64 +13,12 @@
             <RowDefinition Height="6*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <HorizontalStackLayout
-            Spacing="50"
-            HorizontalOptions="Center">
-            <VerticalStackLayout
-                Spacing="5">
-                <Label
-                    Text="Calories"
-                    FontSize="30"
-                    HorizontalOptions="Center"/>
-                <Entry
-                    x:Name="CalsEntry"
-                    Placeholder="Calories"
-                    FontSize="30"
-                    Style="{StaticResource SubHeadline}"/>
-            </VerticalStackLayout>
-            <VerticalStackLayout
-                Spacing="5">
-                <Label
-                    Text="Carbs"
-                    FontSize="30"
-                    HorizontalOptions="Center"/>
-                <Entry
-                    x:Name="CarbsEntry"
-                    Placeholder="Carbs"
-                    FontSize="30"
-                    Style="{StaticResource SubHeadline}"/>
-            </VerticalStackLayout>
-            <Entry
-                x:Name="RecipeNameEntry"
-                Placeholder="Recipe Name"
-                FontSize="50"
-                Style="{StaticResource Headline}"/>
-            <VerticalStackLayout
-                Spacing="5">
-                <Label
-                    Text="Protein"
-                    FontSize="30"
-                    HorizontalOptions="Center"/>
-                <Entry
-                    x:Name="ProteinEntry"
-                    Placeholder="Protein"
-                    FontSize="30"
-                    Style="{StaticResource SubHeadline}"/>
-            </VerticalStackLayout>
-            <VerticalStackLayout
-                Spacing="5">
-                <Label
-                    Text="Fat"
-                    FontSize="30"
-                    HorizontalOptions="Center"/>
-                <Entry
-                    x:Name="FatEntry"
-                    Placeholder="Fat"
-                    FontSize="30"
-                    Style="{StaticResource SubHeadline}"/>
-            </VerticalStackLayout>
-            
-        </HorizontalStackLayout>
+        <Entry
+            x:Name="RecipeNameEntry"
+            Placeholder="Recipe Name"
+            FontSize="{OnPlatform 50, iOS=35}"
+            Style="{StaticResource Headline}"/>
+        
         <Border
             Grid.Row="1"
             Stroke="{StaticResource White}"
@@ -128,6 +76,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
@@ -157,12 +106,27 @@
                 Grid.Row="1"
                 Grid.Column="0"/>
             <Button
-                x:Name="Save"
-                Text="Save Ingredient"
-                Clicked="Save_OnClicked"
+                x:Name="Macros"
+                Text="Edit Macros"
+                Clicked="Macros_OnClicked"
                 FontSize="{OnPlatform iOS=16}"
                 Grid.Row="1"
                 Grid.Column="1"/>
+            <Button
+                x:Name="Steps"
+                Text="Edit Steps"
+                Clicked="Steps_OnClicked"
+                FontSize="{OnPlatform iOS=16}"
+                Grid.Row="2"
+                Grid.Column="0"/>
+            <Button
+                x:Name="Save"
+                Text="Save"
+                Clicked="Save_OnClicked"
+                FontSize="{OnPlatform iOS=16}"
+                Grid.Row="2"
+                Grid.Column="1"/>
+            
         </Grid>
     </Grid>
 </ContentPage>

@@ -2,8 +2,7 @@
 
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:model="clr-namespace:MealPrepPlanner_XPlatform.Model"
-             x:Class="MealPrepPlanner_XPlatform.View.AddEditIngredientPage"
+             x:Class="MealPrepPlanner_XPlatform.View.EditMacros"
              Shell.NavBarIsVisible="False">
     <ScrollView>
         <Grid
@@ -17,34 +16,44 @@
                 <ColumnDefinition
                     Width="*"/>
             </Grid.ColumnDefinitions>
-        
             <VerticalStackLayout
-                Spacing="50">
+                Spacing="25">
                 <Label
-                    Text="Edit Ingredient"
+                    Text="Edit Macros"
                     FontSize="50"
                     Style="{StaticResource Headline}"/>
                 <Label
-                    Text="Ingredient Name"
+                    Text="Calories"
                     Style="{StaticResource SubHeadline}"/>
                 <Entry
-                    x:Name="IngredientNameEntry"
-                    Placeholder="Name"
+                    x:Name="CalsEntry"
+                    Placeholder="Calories"
                     FontSize="50"
                     Style="{StaticResource Headline}"/>
                 <Label
-                    Text="Amount"
+                    Text="Carbohydrates"
                     Style="{StaticResource SubHeadline}"/>
                 <Entry
-                    x:Name="IngredientAmountEntry"
-                    Placeholder="Amount"
+                    x:Name="CarbsEntry"
+                    Placeholder="Carbohydrates"
                     FontSize="50"
                     Style="{StaticResource Headline}"/>
-                <Picker
-                    x:Name="MeasurementPicker"
-                    x:DataType="model:Ingredient"
-                    HorizontalTextAlignment="Center"
-                    FontSize="50"/>
+                <Label
+                    Text="Protein"
+                    Style="{StaticResource SubHeadline}"/>
+                <Entry
+                    x:Name="ProteinEntry"
+                    Placeholder="Protein"
+                    FontSize="50"
+                    Style="{StaticResource Headline}"/>
+                <Label
+                    Text="Fat"
+                    Style="{StaticResource SubHeadline}"/>
+                <Entry
+                    x:Name="FatEntry"
+                    Placeholder="Fat"
+                    FontSize="50"
+                    Style="{StaticResource Headline}"/>
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition
@@ -59,5 +68,4 @@
             </VerticalStackLayout>
         </Grid>
     </ScrollView>
-        
 </ContentPage>

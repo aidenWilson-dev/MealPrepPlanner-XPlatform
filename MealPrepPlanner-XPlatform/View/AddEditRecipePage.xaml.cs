@@ -15,11 +15,6 @@ public partial class AddEditRecipePage : ContentPage
         //Get recipe to edit and set placeholder text of Entry to the recipe name
         _recipe = recipeToEdit;
         RecipeNameEntry.Text = _recipe.RecipeName;
-        CalsEntry.Text = _recipe.RecipeMacros.Cals.ToString();
-        //Invariant culture as different cultures use different separator for the decimal place
-        CarbsEntry.Text = _recipe.RecipeMacros.Carbs.ToString(CultureInfo.InvariantCulture);
-        ProteinEntry.Text = _recipe.RecipeMacros.Protein.ToString(CultureInfo.InvariantCulture);
-        FatEntry.Text = _recipe.RecipeMacros.Fat.ToString(CultureInfo.InvariantCulture);
         //Set binding context
         /*
          * Done differently here because the collection view does not utilise the data template
@@ -57,18 +52,29 @@ public partial class AddEditRecipePage : ContentPage
     //Event handler for Save button
     private async void Save_OnClicked(object? sender, EventArgs e)
     {
+        //See if name has changed
         var oldName = _recipe.RecipeName;
         var newName = RecipeNameEntry.Text;
         if (oldName != newName)
         {
+            //If it has update the file name and recipe name
             RecipeBook.UpdateRecipeFileName(oldName, newName);
             _recipe.RecipeName = newName;
         }
-        _recipe.RecipeMacros.Cals = Convert.ToInt32(CalsEntry.Text);
-        _recipe.RecipeMacros.Carbs = Convert.ToDouble(CarbsEntry.Text);
-        _recipe.RecipeMacros.Protein = Convert.ToDouble(ProteinEntry.Text);
-        _recipe.RecipeMacros.Fat = Convert.ToDouble(FatEntry.Text);
         await Navigation.PopAsync();
+    }
+    
+    //Event handler for macros button
+    private async void Macros_OnClicked(object? sender, EventArgs e)
+    {
+        //Navigate to the edit ingredient page supplying the selected item in list
+        await Navigation.PushAsync(new EditMacros(_recipe.RecipeMacros));
+    }
+
+    //Event handler for steps button
+    private void Steps_OnClicked(object? sender, EventArgs e)
+    {
+        throw new NotImplementedException();
     }
     
     private Ingredient SelectedIngredient()
@@ -76,6 +82,4 @@ public partial class AddEditRecipePage : ContentPage
         var model = (Ingredient)IngredientView.SelectedItem;
         return model;
     }
-
-    
 }
