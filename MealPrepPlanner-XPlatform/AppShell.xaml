@@ -27,5 +27,20 @@
         Title="Add/Edit Ingredient"
         ContentTemplate="{DataTemplate view:AddEditIngredientPage}"
         Route="AddEditIngredient"/>
+    
+    <ShellContent
+        Title="Days Selector"
+        ContentTemplate="{DataTemplate view:DaySelectorPage}"
+        Route="DaySelector"/>
+    
+    <ShellContent
+        Title="Meal Selector"
+        ContentTemplate="{DataTemplate view:MealSelectorPage}"
+        Route="MealSelector"/>
+    
+    <ShellContent
+        Title="Week Breakdown"
+        ContentTemplate="{DataTemplate view:WeekBreakdownPage}"
+        Route="WeekBreakdown"/>
 
 </Shell>
