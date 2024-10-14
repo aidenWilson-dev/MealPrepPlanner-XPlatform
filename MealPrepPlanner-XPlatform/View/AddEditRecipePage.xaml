@@ -13,11 +13,64 @@
             <RowDefinition Height="6*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Entry
-            x:Name="RecipeNameEntry"
-            Placeholder="Recipe Name"
-            FontSize="50"
-            Style="{StaticResource Headline}"/>
+        <HorizontalStackLayout
+            Spacing="50"
+            HorizontalOptions="Center">
+            <VerticalStackLayout
+                Spacing="5">
+                <Label
+                    Text="Calories"
+                    FontSize="30"
+                    HorizontalOptions="Center"/>
+                <Entry
+                    x:Name="CalsEntry"
+                    Placeholder="Calories"
+                    FontSize="30"
+                    Style="{StaticResource SubHeadline}"/>
+            </VerticalStackLayout>
+            <VerticalStackLayout
+                Spacing="5">
+                <Label
+                    Text="Carbs"
+                    FontSize="30"
+                    HorizontalOptions="Center"/>
+                <Entry
+                    x:Name="CarbsEntry"
+                    Placeholder="Carbs"
+                    FontSize="30"
+                    Style="{StaticResource SubHeadline}"/>
+            </VerticalStackLayout>
+            <Entry
+                x:Name="RecipeNameEntry"
+                Placeholder="Recipe Name"
+                FontSize="50"
+                Style="{StaticResource Headline}"/>
+            <VerticalStackLayout
+                Spacing="5">
+                <Label
+                    Text="Protein"
+                    FontSize="30"
+                    HorizontalOptions="Center"/>
+                <Entry
+                    x:Name="ProteinEntry"
+                    Placeholder="Protein"
+                    FontSize="30"
+                    Style="{StaticResource SubHeadline}"/>
+            </VerticalStackLayout>
+            <VerticalStackLayout
+                Spacing="5">
+                <Label
+                    Text="Fat"
+                    FontSize="30"
+                    HorizontalOptions="Center"/>
+                <Entry
+                    x:Name="FatEntry"
+                    Placeholder="Fat"
+                    FontSize="30"
+                    Style="{StaticResource SubHeadline}"/>
+            </VerticalStackLayout>
+            
+        </HorizontalStackLayout>
         <Border
             Grid.Row="1"
             Stroke="{StaticResource White}"

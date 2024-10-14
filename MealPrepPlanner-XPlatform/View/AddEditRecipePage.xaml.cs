@@ -1,3 +1,4 @@
+using System.Globalization;
 using MealPrepPlanner_XPlatform.Model;
 
 namespace MealPrepPlanner_XPlatform.View;
@@ -14,6 +15,11 @@ public partial class AddEditRecipePage : ContentPage
         //Get recipe to edit and set placeholder text of Entry to the recipe name
         _recipe = recipeToEdit;
         RecipeNameEntry.Text = _recipe.RecipeName;
+        CalsEntry.Text = _recipe.RecipeMacros.Cals.ToString();
+        //Invariant culture as different cultures use different separator for the decimal place
+        CarbsEntry.Text = _recipe.RecipeMacros.Carbs.ToString(CultureInfo.InvariantCulture);
+        ProteinEntry.Text = _recipe.RecipeMacros.Protein.ToString(CultureInfo.InvariantCulture);
+        FatEntry.Text = _recipe.RecipeMacros.Fat.ToString(CultureInfo.InvariantCulture);
         //Set binding context
         /*
          * Done differently here because the collection view does not utilise the data template
@@ -58,6 +64,10 @@ public partial class AddEditRecipePage : ContentPage
             RecipeBook.UpdateRecipeFileName(oldName, newName);
             _recipe.RecipeName = newName;
         }
+        _recipe.RecipeMacros.Cals = Convert.ToInt32(CalsEntry.Text);
+        _recipe.RecipeMacros.Carbs = Convert.ToDouble(CarbsEntry.Text);
+        _recipe.RecipeMacros.Protein = Convert.ToDouble(ProteinEntry.Text);
+        _recipe.RecipeMacros.Fat = Convert.ToDouble(FatEntry.Text);
         await Navigation.PopAsync();
     }
     
