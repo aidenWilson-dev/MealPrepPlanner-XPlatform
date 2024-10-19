@@ -104,6 +104,49 @@
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
+            <BoxView HeightRequest="1" Color="Gray"/>
+            <CollectionView
+                x:Name="StepView"
+                x:DataType="model:Recipe"
+                ItemsSource="{Binding Steps}"
+                SelectionMode="None"
+                HorizontalOptions="Start">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid
+                            ColumnSpacing="7">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition
+                                    Width="Auto"/>
+                                <ColumnDefinition
+                                    Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <HorizontalStackLayout
+                                Spacing="7">
+                                <Label Text="Step"
+                                       Style="{StaticResource SubHeadline}"
+                                       VerticalTextAlignment="Center"/>
+                                <Label Text="{Binding StepNum}"
+                                       Style="{StaticResource SubHeadline}"
+                                       VerticalTextAlignment="Center"
+                                       x:DataType="model:Step"/>
+                                <Label Text="-"
+                                       Style="{StaticResource SubHeadline}"
+                                       VerticalTextAlignment="Center"/>
+                            </HorizontalStackLayout>
+                            
+                            <Label Text="{Binding StepString}"
+                                   Style="{StaticResource SubHeadline}"
+                                   Grid.Column="1"
+                                   VerticalTextAlignment="Center"
+                                   x:DataType="model:Step"/>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
         </VerticalStackLayout>
     </ScrollView>
     
