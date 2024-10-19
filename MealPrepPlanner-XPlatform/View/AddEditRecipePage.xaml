@@ -104,14 +104,14 @@
                 Clicked="Delete_OnClicked"
                 FontSize="{OnPlatform iOS=16}"
                 Grid.Row="1"
-                Grid.Column="0"/>
+                Grid.Column="1"/>
             <Button
                 x:Name="Macros"
                 Text="Edit Macros"
                 Clicked="Macros_OnClicked"
                 FontSize="{OnPlatform iOS=16}"
                 Grid.Row="1"
-                Grid.Column="1"/>
+                Grid.Column="0"/>
             <Button
                 x:Name="Steps"
                 Text="Edit Steps"

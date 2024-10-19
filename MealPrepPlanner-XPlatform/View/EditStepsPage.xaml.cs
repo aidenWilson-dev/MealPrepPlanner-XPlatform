@@ -10,12 +10,18 @@ namespace MealPrepPlanner_XPlatform.View;
 public partial class EditStepsPage : ContentPage
 {
 
-    private Recipe _recipe;
+    private readonly Recipe _recipe;
     
     public EditStepsPage(Recipe recipe)
     {
         InitializeComponent();
         _recipe = recipe;
+        /*
+         * Done differently here because the collection view does not utilise the data template
+         * if the binding context is set via the XAML page. It creates a new Recipe object
+         * and binds the page to that, in this case we want to pass in an already created object
+         */
+        BindingContext = _recipe;
     }
 
     private async void Save_OnClicked(object? sender, EventArgs e)
@@ -25,6 +31,8 @@ public partial class EditStepsPage : ContentPage
 
     private void NewStep_OnClicked(object? sender, EventArgs e)
     {
-        throw new NotImplementedException();
+        _recipe.AddStep("New Step");
+        
+        
     }
 }

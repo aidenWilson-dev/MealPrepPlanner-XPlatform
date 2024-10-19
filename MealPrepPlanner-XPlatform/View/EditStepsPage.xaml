@@ -2,6 +2,7 @@
 
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:model="clr-namespace:MealPrepPlanner_XPlatform.Model"
              x:Class="MealPrepPlanner_XPlatform.View.EditStepsPage"
              Shell.NavBarIsVisible="False">
      <Grid
@@ -24,6 +25,8 @@
             StrokeThickness="4">
             <CollectionView
                 x:Name="StepsView"
+                x:DataType="model:Recipe"
+                ItemsSource="{Binding Steps}"
                 SelectionMode="Single">
                 <CollectionView.ItemsLayout>
                     <LinearItemsLayout Orientation="Vertical"/>
@@ -38,16 +41,22 @@
                                     <ColumnDefinition
                                         Width="*"/>
                                     <ColumnDefinition
-                                        Width="*"/>
+                                        Width="8*"/>
                                 </Grid.ColumnDefinitions>
                                 <Label 
-                                       Style="{StaticResource SubHeadline}"
-                                       Grid.Column="0"
-                                       VerticalTextAlignment="Center"/>
-                                <Label 
-                                       Style="{StaticResource SubHeadline}"
-                                       Grid.Column="1"
-                                       VerticalTextAlignment="Center"/>
+                                    Text="{Binding StepNum}"
+                                    Style="{StaticResource SubHeadline}"
+                                    Grid.Column="0"
+                                    VerticalTextAlignment="Center"
+                                    x:DataType="model:Step"/>
+                                <Entry 
+                                    Text="{Binding StepString}"
+                                    HorizontalOptions="Fill"
+                                    Placeholder="Step Text"
+                                    Style="{StaticResource SubHeadline}"
+                                    Grid.Column="1"
+                                    VerticalTextAlignment="Center"
+                                    x:DataType="model:Step"/>
                             </Grid>
                         </Border>
                     </DataTemplate>
