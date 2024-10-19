@@ -75,7 +75,7 @@ public partial class AddEditRecipePage : ContentPage
     private async void Steps_OnClicked(object? sender, EventArgs e)
     {
         //Navigate to the edit steps page supplying the selected item in list
-        await Navigation.PushAsync(new EditStepsPage());
+        await Navigation.PushAsync(new EditStepsPage(_recipe));
     }
     
     private Ingredient SelectedIngredient()

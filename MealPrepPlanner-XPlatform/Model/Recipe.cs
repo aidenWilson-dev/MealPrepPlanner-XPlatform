@@ -13,6 +13,9 @@ public class Recipe : INotifyPropertyChanged
     //Observable collection of ingredients 
     public ObservableCollection<Ingredient> Ingredients { get; } = new ObservableCollection<Ingredient>();
     
+    //Observable collection of steps
+    public ObservableCollection<Step> Steps { get; } = new ObservableCollection<Step>();
+    
     //Macros object associated with recipe, default is 0 for each
     public Macros RecipeMacros = new Macros(0, 0, 0, 0);
     
@@ -35,6 +38,14 @@ public class Recipe : INotifyPropertyChanged
     {
         var newIngredient = new Ingredient(name, amount, measurement);
         Ingredients.Add(newIngredient);
+    }
+    
+    //add new step to observable collection
+    public void AddStep(string step)
+    {
+        var num = Steps.Count + 1;
+        var newStep = new Step(num, step);
+        Steps.Add(newStep);
     }
     
     //Add macros
