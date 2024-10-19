@@ -1,15 +1,12 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using MealPrepPlanner_XPlatform.Model;
 
 namespace MealPrepPlanner_XPlatform.View;
 
+//Handles interaction logic for edit steps page
 public partial class EditStepsPage : ContentPage
 {
 
+    //Recipe being edited
     private readonly Recipe _recipe;
     
     public EditStepsPage(Recipe recipe)
@@ -24,15 +21,16 @@ public partial class EditStepsPage : ContentPage
         BindingContext = _recipe;
     }
 
+    //Event handler for save button
     private async void Save_OnClicked(object? sender, EventArgs e)
     {
         await Navigation.PopAsync();
     }
 
+    //Event handler for new step button
     private void NewStep_OnClicked(object? sender, EventArgs e)
     {
+        //Add a new step with default text
         _recipe.AddStep("New Step");
-        
-        
     }
 }

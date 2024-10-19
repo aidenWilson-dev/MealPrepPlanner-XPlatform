@@ -4,6 +4,7 @@ namespace MealPrepPlanner_XPlatform.Model;
 
 public class RecipeBook
 {
+    //Observable list of recipes
     public ObservableCollection<Recipe> Recipes { get; set; } = new ObservableCollection<Recipe>();
     
     public RecipeBook()
@@ -117,7 +118,7 @@ public class RecipeBook
         try
         {
             //Get recipe dump
-            var recipeDump = recipe.IngredientDump();
+            var recipeDump = recipe.RecipeDump();
             //Write to file
             if (newFile.Directory != null)
             {
@@ -141,6 +142,7 @@ public class RecipeBook
         var recipeFolder = recipeBookFolder.GetFiles();
         foreach (var recipeFile in recipeFolder)
         {
+            var IngredientsLoaded = false;
             //If the file is a .DS_Store file, skip the current iteration
             if (recipeFile.Name == ".DS_Store") continue;
             try
@@ -152,12 +154,12 @@ public class RecipeBook
                 for (var i = 0; i < recipeFileLines.Length; i++)
                 {
                     var ingredientLine = recipeFileLines[i];
-                    //Split line at separator
-                    var parts = ingredientLine.Split(":");
                     //If we are on the first line of the file 
                     //Which is where the macros are stored
                     if (i == 0)
                     {
+                        //Split line at separator
+                        var parts = ingredientLine.Split(":");
                         //Get macros
                         var cals = int.Parse(parts[0]);
                         var carbs = double.Parse(parts[1]);
@@ -166,8 +168,22 @@ public class RecipeBook
                         //Add macros to recipe
                         newRecipe.AddMacros(cals, carbs, protein, fat);
                     }
+                    //If we have encountered the ingredient steps separator 
+                    else if (ingredientLine.Contains('-'))
+                    {
+                        //All ingredients have been loaded
+                        IngredientsLoaded = true;
+                    }
+                    //If we are in the steps section of the file
+                    else if (IngredientsLoaded)
+                    {
+                        newRecipe.AddStep(ingredientLine);
+                    }
+                    //Ingredients section of file 
                     else
                     {
+                        //Split line at separator
+                        var parts = ingredientLine.Split(":");
                         //Get parts
                         var ingredientName = parts[0];
                         var ingredientAmount = int.Parse(parts[1]);
