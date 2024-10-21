@@ -70,8 +70,10 @@ public partial class RecipeBookPage : ContentPage
 
     private async void ViewRecipe_OnClicked(object? sender, EventArgs e)
     {
-        //Navigate to the recipe view supplying the selected item in list
-        var selectedModel = SelectedRecipe();
+        //Get the recipe that the view button that was clicked is attached too
+        var button = sender as Button;
+        var selectedModel = button?.CommandParameter as Recipe;
+        //if the model is not null navigate to a recipe page with that model
         if (selectedModel == null) return;
         await Navigation.PushAsync(new RecipePage(selectedModel));
     }

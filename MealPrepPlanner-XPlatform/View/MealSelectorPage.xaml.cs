@@ -18,14 +18,12 @@ public partial class MealSelectorPage : ContentPage
 
     private async void ViewRecipe_OnClicked(object? sender, EventArgs e)
     {
-        //Navigate to the recipe view supplying the selected item in list
-        var selectedRecipes = SelectedRecipes();
-        //Check if the selected items is not null and the length is greater than or equal to 1
-        if (selectedRecipes is not { Count: >= 1 }) return;
-        //Get the model
-        var selectedModel = selectedRecipes[0];
+        //Get the recipe that the view button that was clicked is attached too
+        var button = sender as Button;
+        var selectedModel = button?.CommandParameter as Recipe;
+        //if the model is not null navigate to a recipe page with that model
+        if (selectedModel == null) return;
         await Navigation.PushAsync(new RecipePage(selectedModel));
-
     }
 
     private async void Close_OnClicked(object? sender, EventArgs e)

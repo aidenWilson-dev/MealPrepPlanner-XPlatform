@@ -51,6 +51,7 @@
                                 <Button Text="View"
                                         x:Name="ViewRecipe"
                                         Clicked="ViewRecipe_OnClicked"
+                                        CommandParameter="{Binding .}"
                                         HorizontalOptions="End"
                                         HeightRequest="44"
                                         Grid.Column="1"/>
