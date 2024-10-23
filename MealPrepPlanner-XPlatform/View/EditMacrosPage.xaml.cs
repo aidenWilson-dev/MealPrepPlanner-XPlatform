@@ -5,12 +5,12 @@ using MealPrepPlanner_XPlatform.Model;
 namespace MealPrepPlanner_XPlatform.View;
 
 //Handles interaction logic for editing macros
-public partial class EditMacros : ContentPage
+public partial class EditMacrosPage : ContentPage
 {
     //Recipe being edited
     private readonly Macros _macros;
     
-    public EditMacros(Macros macrosToEdit)
+    public EditMacrosPage(Macros macrosToEdit)
     {
         InitializeComponent();
         //Get recipe to edit and set placeholder text of Entry to the recipe name

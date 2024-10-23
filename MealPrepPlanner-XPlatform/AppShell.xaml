@@ -42,5 +42,20 @@
         Title="Week Breakdown"
         ContentTemplate="{DataTemplate view:WeekBreakdownPage}"
         Route="WeekBreakdown"/>
+    
+    <ShellContent
+        Title="Edit Macros"
+        ContentTemplate="{DataTemplate view:EditMacrosPage}"
+        Route="EditMacros"/>
+    
+    <ShellContent
+        Title="Edit Steps"
+        ContentTemplate="{DataTemplate view:EditStepsPage}"
+        Route="EditSteps"/>
+    
+    <ShellContent
+        Title="Recipe"
+        ContentTemplate="{DataTemplate view:RecipePage}"
+        Route="Recipe"/>
 
 </Shell>

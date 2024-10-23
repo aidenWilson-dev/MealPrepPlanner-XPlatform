@@ -68,7 +68,7 @@ public partial class AddEditRecipePage : ContentPage
     private async void Macros_OnClicked(object? sender, EventArgs e)
     {
         //Navigate to the edit ingredient macros page supplying the selected items macros
-        await Navigation.PushAsync(new EditMacros(_recipe.RecipeMacros));
+        await Navigation.PushAsync(new EditMacrosPage(_recipe.RecipeMacros));
     }
 
     //Event handler for steps button
