@@ -1,4 +1,7 @@
+using System;
 using MealPrepPlanner_XPlatform.Model;
+using Microsoft.Maui.Controls;
+using Microsoft.Maui.Devices;
 
 namespace MealPrepPlanner_XPlatform.View;
 

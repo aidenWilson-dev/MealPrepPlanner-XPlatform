@@ -1,4 +1,8 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using MealPrepPlanner_XPlatform.Model;
+using Microsoft.Maui.Controls;
 
 namespace MealPrepPlanner_XPlatform.View;
 

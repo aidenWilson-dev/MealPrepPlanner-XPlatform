@@ -1,4 +1,6 @@
-﻿namespace MealPrepPlanner_XPlatform;
+﻿using Microsoft.Maui.Controls;
+
+namespace MealPrepPlanner_XPlatform;
 
 public partial class AppShell : Shell
 {

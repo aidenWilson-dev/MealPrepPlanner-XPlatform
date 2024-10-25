@@ -1,4 +1,8 @@
-﻿namespace MealPrepPlanner_XPlatform.View;
+﻿using System;
+using Microsoft.Maui.Controls;
+using Microsoft.Maui.Devices;
+
+namespace MealPrepPlanner_XPlatform.View;
 
 //Handles interaction logic for main page
 public partial class MainPage : ContentPage
