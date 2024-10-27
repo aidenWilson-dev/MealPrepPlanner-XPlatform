@@ -47,7 +47,7 @@
                         Height="*"/>
                 </Grid.RowDefinitions>
                 <Border
-                    Stroke="{StaticResource White}"
+                    Stroke="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black}}"
                     StrokeThickness="4">
                     <Label
                         Text="Day"
@@ -56,7 +56,7 @@
                         Style="{StaticResource SubHeadline}"/>
                 </Border>
                 <Border
-                    Stroke="{StaticResource White}"
+                    Stroke="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black}}"
                     StrokeThickness="4"
                     Grid.Column="1"
                     Grid.Row="0">
@@ -67,7 +67,7 @@
                         Style="{StaticResource SubHeadline}"/>
                 </Border>
                 <Border
-                    Stroke="{StaticResource White}"
+                    Stroke="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black}}"
                     StrokeThickness="4"
                     Grid.Column="2"
                     Grid.Row="0">
@@ -78,7 +78,7 @@
                         Style="{StaticResource SubHeadline}"/>
                 </Border>
                 <Border
-                    Stroke="White"
+                    Stroke="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black}}"
                     StrokeThickness="4"
                     Grid.Column="3"
                     Grid.Row="0">
@@ -89,7 +89,7 @@
                         Style="{StaticResource SubHeadline}"/>
                 </Border>
                 <Border
-                    Stroke="White"
+                    Stroke="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black}}"
                     StrokeThickness="4"
                     Grid.Column="0"
                     Grid.Row="1">
@@ -100,7 +100,7 @@
                         Style="{StaticResource SubHeadline}"/>
                 </Border>
                 <Border
-                    Stroke="White"
+                    Stroke="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black}}"
                     StrokeThickness="4"
                     Grid.Column="0"
                     Grid.Row="2">
@@ -111,7 +111,7 @@
                         Style="{StaticResource SubHeadline}"/>
                 </Border>
                 <Border
-                    Stroke="White"
+                    Stroke="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black}}"
                     StrokeThickness="4"
                     Grid.Column="0"
                     Grid.Row="3">
@@ -122,7 +122,7 @@
                         Style="{StaticResource SubHeadline}"/>
                 </Border>
                 <Border
-                    Stroke="White"
+                    Stroke="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black}}"
                     StrokeThickness="4"
                     Grid.Column="0"
                     Grid.Row="4">
@@ -133,7 +133,7 @@
                         Style="{StaticResource SubHeadline}"/>
                 </Border>
                 <Border
-                    Stroke="White"
+                    Stroke="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black}}"
                     StrokeThickness="4"
                     Grid.Column="0"
                     Grid.Row="5">
@@ -144,7 +144,7 @@
                         Style="{StaticResource SubHeadline}"/>
                 </Border>
                 <Border
-                    Stroke="White"
+                    Stroke="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black}}"
                     StrokeThickness="4"
                     Grid.Column="0"
                     Grid.Row="6">
@@ -155,7 +155,7 @@
                         Style="{StaticResource SubHeadline}"/>
                 </Border>
                 <Border
-                    Stroke="White"
+                    Stroke="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black}}"
                     StrokeThickness="4"
                     Grid.Column="0"
                     Grid.Row="7">

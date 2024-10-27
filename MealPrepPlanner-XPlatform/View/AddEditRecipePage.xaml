@@ -21,7 +21,7 @@
         
         <Border
             Grid.Row="1"
-            Stroke="{StaticResource White}"
+            Stroke="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black}}"
             StrokeThickness="4">
             <CollectionView
                 x:Name="IngredientView"

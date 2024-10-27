@@ -26,7 +26,7 @@
                     Style="{StaticResource SubHeadline}"/>
            </VerticalStackLayout>
             <Border
-                Stroke="{StaticResource White}"
+                Stroke="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black}}"
                 StrokeThickness="4"
                 Grid.Row="1">
                 <CollectionView
