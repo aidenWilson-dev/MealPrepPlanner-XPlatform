@@ -23,6 +23,8 @@
         <!-- Display name -->
         <ApplicationTitle>MealPrepPlanner</ApplicationTitle>
 
+        <AssemblyName>Meal Prep Planner</AssemblyName>
+
         <!-- App Identifier -->
         <ApplicationId>com.companyname.mealprepplannerxplatform</ApplicationId>
 
