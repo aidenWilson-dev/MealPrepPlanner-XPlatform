@@ -32,7 +32,7 @@ To build and run this project, ensure you have the following installed:
 - Windows 10/11
 - Visual Studio 2022 or later with the following workloads:
   - **.NET Multi-platform App UI development** 
-  - **Mobile development with .NET** (for Android)
+  - **.NET Android SDK** ([Download .NET Android SDK](https://dotnet.microsoft.com/download))
 - Android Emulator (installed with the Android workload)
 - .NET 7 or later installed ([Download .NET](https://dotnet.microsoft.com/download))
 
