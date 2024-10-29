@@ -28,7 +28,7 @@ A cross-platform, all inclusive recipe storing, and planning app for fitness ent
 
 To build and run this project, ensure you have the following installed:
 
-### Windows (for Windows/Android apps)
+### Windows (for Windows/Android)
 - Windows 10/11
 - Visual Studio 2022 or later with the following workloads:
   - **.NET Multi-platform App UI development** 
@@ -36,7 +36,7 @@ To build and run this project, ensure you have the following installed:
 - Android Emulator (installed with the Android workload)
 - .NET 7 or later installed ([Download .NET](https://dotnet.microsoft.com/download))
 
-### macOS (for iOS/macOS apps)
+### macOS (for iOS/macOS)
 - macOS 12 (Monterey) or later
 - Xcode 14 or later (for iOS/macOS builds)
 - Visual Studio for Mac 2022 or JetBrains Rider with .NET MAUI support
