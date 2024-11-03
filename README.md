@@ -30,9 +30,10 @@ To build and run this project, ensure you have the following installed:
 
 ### Windows (for Windows/Android)
 - Windows 10/11
+  -  Windows 10 requires WinUI 3 Gallery ([Download WinUI 3](https://www.microsoft.com/store/productId/9P3JFPWWDZRC?ocid=pdpshare))
 - Visual Studio 2022 or later with the following workloads:
   - **.NET Multi-platform App UI development** 
-  - **.NET Android SDK** ([Download .NET Android SDK](https://dotnet.microsoft.com/download))
+  - **Desktop Development with C++**
 - Android Emulator (installed with the Android workload)
 - .NET 7 or later installed ([Download .NET](https://dotnet.microsoft.com/download))
 
