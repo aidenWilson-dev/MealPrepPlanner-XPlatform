@@ -51,4 +51,4 @@ To build and run this project, ensure you have the following installed:
 
 
 ## Download
-- Alternatively, to install the most recent version of the meal-prep planner, it can be found under the releases tab of this repository.
+- Alternatively, to install the most recent version of the meal-prep planner for your OS, it can be found under the releases tab of this repository. There you can find the MacOS and Windows versions.
