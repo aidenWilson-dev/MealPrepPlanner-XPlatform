@@ -165,11 +165,12 @@ public class RecipeBook
                         var parts = ingredientLine.Split(":");
                         //Get macros
                         var cals = int.Parse(parts[0]);
-                        var carbs = double.Parse(parts[1]);
-                        var protein = double.Parse(parts[2]);
-                        var fat = double.Parse(parts[3]);
+                        var serves = int.Parse(parts[1]);
+                        var carbs = double.Parse(parts[2]);
+                        var protein = double.Parse(parts[3]);
+                        var fat = double.Parse(parts[4]);
                         //Add macros to recipe
-                        newRecipe.AddMacros(cals, carbs, protein, fat);
+                        newRecipe.AddMacros(cals, serves, carbs, protein, fat);
                     }
                     //If we have encountered the ingredient steps separator 
                     else if (ingredientLine.Contains('-'))

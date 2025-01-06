@@ -3,7 +3,7 @@ using System.Text;
 
 namespace MealPrepPlanner_XPlatform.Model;
 
-public class Macros(int cals, double carbs, double protein, double fat) : INotifyPropertyChanged
+public class Macros(int cals, double serves, double carbs, double protein, double fat) : INotifyPropertyChanged
 {
     //Property changed event
     public event PropertyChangedEventHandler? PropertyChanged;
@@ -19,6 +19,20 @@ public class Macros(int cals, double carbs, double protein, double fat) : INotif
             //Set calories amount and notify property changed
             _cals = value;
             OnPropertyChanged(nameof(Cals));
+        }
+    }
+    
+    //Property for serves
+    private double _serves = serves;
+    public double Serves
+    {
+        //Return serves amount
+        get => _serves;
+        set
+        {
+            //Set serves amount and notify property changed
+            _serves = value;
+            OnPropertyChanged(nameof(Serves));
         }
     }
     
@@ -67,7 +81,7 @@ public class Macros(int cals, double carbs, double protein, double fat) : INotif
     public string MacrosDump()
     {
         var macrosDump = new StringBuilder();
-        macrosDump.Append($"{Cals}:{Carbs}:{Protein}:{Fat}\n");
+        macrosDump.Append($"{Cals}:{Serves}:{Carbs}:{Protein}:{Fat}\n");
         return macrosDump.ToString();
     }
     

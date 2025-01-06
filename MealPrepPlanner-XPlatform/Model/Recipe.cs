@@ -17,7 +17,7 @@ public class Recipe : INotifyPropertyChanged
     public ObservableCollection<Step> Steps { get; } = new ObservableCollection<Step>();
     
     //Macros object associated with recipe, default is 0 for each
-    public readonly Macros RecipeMacros = new Macros(0, 0, 0, 0);
+    public readonly Macros RecipeMacros = new Macros(0, 1, 0, 0, 0);
     
     //Recipe name property, Recipe Name is default value
     private string _recipeName = "Recipe name";
@@ -52,10 +52,11 @@ public class Recipe : INotifyPropertyChanged
     }
     
     //Add macros
-    public void AddMacros(int cals, double carbs, double protein, double fat)
+    public void AddMacros(int cals, double serves, double carbs, double protein, double fat)
     {
         //Set recipe macros
         RecipeMacros.Cals = cals;
+        RecipeMacros.Serves = serves;
         RecipeMacros.Carbs = carbs;
         RecipeMacros.Protein = protein;
         RecipeMacros.Fat = fat;
