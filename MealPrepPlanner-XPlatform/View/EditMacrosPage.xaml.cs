@@ -19,6 +19,7 @@ public partial class EditMacrosPage : ContentPage
         _macros = macrosToEdit;
         CalsEntry.Text = _macros.Cals.ToString();
         //Invariant culture as different cultures use different separator for the decimal place
+        ServesEntry.Text = _macros.Serves.ToString(CultureInfo.InvariantCulture);
         CarbsEntry.Text = _macros.Carbs.ToString(CultureInfo.InvariantCulture);
         ProteinEntry.Text = _macros.Protein.ToString(CultureInfo.InvariantCulture);
         FatEntry.Text = _macros.Fat.ToString(CultureInfo.InvariantCulture);
@@ -28,6 +29,7 @@ public partial class EditMacrosPage : ContentPage
     {
         //Update macros 
         _macros.Cals = Convert.ToInt32(CalsEntry.Text);
+        _macros.Serves = Convert.ToDouble(ServesEntry.Text);
         _macros.Carbs = Convert.ToDouble(CarbsEntry.Text);
         _macros.Protein = Convert.ToDouble(ProteinEntry.Text);
         _macros.Fat = Convert.ToDouble(FatEntry.Text);
