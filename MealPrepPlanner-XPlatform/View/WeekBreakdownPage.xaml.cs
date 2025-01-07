@@ -31,14 +31,12 @@ public partial class WeekBreakdownPage : ContentPage
 
     private void LoadIngredientsView()
     {
-        //Amount of meals per recipe for the entire week
-        var mealsPerRecipe = _mealsNeeded / _selectedRecipes.Count;
         foreach (var recipe in _selectedRecipes)
         {
             foreach (var ingredient in recipe.Ingredients)
             {
                 //Get the total amount of the ingredient for this recipe
-                var totalAmount = ingredient.IngredientAmount * mealsPerRecipe;
+                var totalAmount = ingredient.IngredientAmount * 1;
 
                 // Check if the ingredient already exists in the list
                 var existingIngredient = _ingredientSum.FirstOrDefault(i => i.IngredientName == ingredient.IngredientName 
