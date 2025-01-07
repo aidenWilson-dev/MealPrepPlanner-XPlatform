@@ -12,6 +12,9 @@ public partial class MealSelectorPage : ContentPage
 {
     //Amount of meals selected
     private readonly int _mealsNeeded;
+    
+    //Remaining meals
+    private double _mealsRemaining;
 
     public MealSelectorPage(RecipeBook recipeBook, int mealsNeeded)
     {
@@ -40,6 +43,13 @@ public partial class MealSelectorPage : ContentPage
 
     private async void Next_OnClicked(object? sender, EventArgs e)
     {
+        //If the user has selected to make more meals than needed this week
+        if (_mealsRemaining <= 0)
+        {
+            //Alert the user they have selected more recipes than needed and allow them to decide
+            var answer = await DisplayAlert("Required Meals Exceeded", "With you're current selection you will create more meals than you need for this week. Are you sure you want to continue?", "Yes", "No");
+            if (!answer) return;
+        }
         //Get selected recipes
         var selectedRecipes = SelectedRecipes();
         //Check if the selected items is not null and the length is greater than or equal to 1
@@ -66,7 +76,7 @@ public partial class MealSelectorPage : ContentPage
             count += selectedRecipe.RecipeMacros.Serves;
         }
         //Set the remaining meals label to the remaining meals
-        var remainingMeals = (_mealsNeeded - count).ToString(CultureInfo.InvariantCulture);
-        MealsRemainingLabel.Text = remainingMeals;
+        _mealsRemaining = (_mealsNeeded - count);
+        MealsRemainingLabel.Text = _mealsRemaining.ToString(CultureInfo.InvariantCulture);
     }
 }
