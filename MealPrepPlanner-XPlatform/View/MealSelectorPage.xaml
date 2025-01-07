@@ -15,7 +15,7 @@
                <RowDefinition Height="*"/>
            </Grid.RowDefinitions>
            <VerticalStackLayout
-                Spacing="{OnPlatform 50, iOS=15}"
+                Spacing="{OnPlatform 30, iOS=15}"
                 Grid.Row="0">
                 <Label 
                     Text="Recipe Selector"
@@ -24,6 +24,17 @@
                 <Label 
                     Text="Select the recipes you want to prep this week."
                     Style="{StaticResource SubHeadline}"/>
+                <HorizontalStackLayout
+                    Spacing="10"
+                    HorizontalOptions="Center">
+                    <Label 
+                        Text="Meals Remaining:"
+                        Style="{StaticResource SubHeadline}"/>
+                    <Label 
+                        x:Name="MealsRemainingLabel"
+                        Text="0"
+                        Style="{StaticResource SubHeadline}"/>
+                </HorizontalStackLayout>
            </VerticalStackLayout>
             <Border
                 Stroke="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black}}"

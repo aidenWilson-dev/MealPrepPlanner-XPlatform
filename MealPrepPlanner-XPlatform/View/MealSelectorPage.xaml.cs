@@ -16,6 +16,7 @@ public partial class MealSelectorPage : ContentPage
     {
         InitializeComponent();
         _mealsNeeded = mealsNeeded;
+        MealsRemainingLabel.Text = _mealsNeeded.ToString();
         //Set binding context to recipe book
         BindingContext = recipeBook;
     }
