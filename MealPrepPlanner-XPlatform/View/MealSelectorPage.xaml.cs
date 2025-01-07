@@ -43,13 +43,21 @@ public partial class MealSelectorPage : ContentPage
 
     private async void Next_OnClicked(object? sender, EventArgs e)
     {
+        //If the user has selected to make fewer meals than needed this week
+        if (_mealsRemaining > 0)
+        {
+            //Alert the user they have selected more recipes than needed and allow them to decide
+            var answer = await DisplayAlert("Required Meals Not Reached", "With you're current selection you will create less meals than you need for this week. Are you sure you want to continue?", "Yes", "No");
+            if (!answer) return;
+        }
         //If the user has selected to make more meals than needed this week
-        if (_mealsRemaining <= 0)
+        if (_mealsRemaining < 0)
         {
             //Alert the user they have selected more recipes than needed and allow them to decide
             var answer = await DisplayAlert("Required Meals Exceeded", "With you're current selection you will create more meals than you need for this week. Are you sure you want to continue?", "Yes", "No");
             if (!answer) return;
         }
+        
         //Get selected recipes
         var selectedRecipes = SelectedRecipes();
         //Check if the selected items is not null and the length is greater than or equal to 1
