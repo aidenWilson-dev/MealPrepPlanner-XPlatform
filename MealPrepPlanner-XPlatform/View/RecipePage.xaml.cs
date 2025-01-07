@@ -15,6 +15,7 @@ public partial class RecipePage : ContentPage
         InitializeComponent();
         BindingContext = recipeToView;
         CaloriesLabel.Text = recipeToView.RecipeMacros.Cals.ToString();
+        ServesLabel.Text = recipeToView.RecipeMacros.Serves.ToString(CultureInfo.InvariantCulture);
         CarbsLabel.Text = recipeToView.RecipeMacros.Carbs.ToString(CultureInfo.InvariantCulture);
         ProteinLabel.Text = recipeToView.RecipeMacros.Protein.ToString(CultureInfo.InvariantCulture);
         FatLabel.Text = recipeToView.RecipeMacros.Fat.ToString(CultureInfo.InvariantCulture);

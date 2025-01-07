@@ -38,6 +38,15 @@
                 <HorizontalStackLayout
                     Spacing="7">
                     <Label 
+                        Text="Serves:"
+                        Style="{StaticResource SubHeadline}"/>
+                    <Label
+                        x:Name="ServesLabel"
+                        Style="{StaticResource SubHeadline}"/>
+                </HorizontalStackLayout>
+                <HorizontalStackLayout
+                    Spacing="7">
+                    <Label 
                         Text="Carbohydrates:"
                         Style="{StaticResource SubHeadline}"/>
                     <Label

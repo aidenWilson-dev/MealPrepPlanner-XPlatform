@@ -145,7 +145,7 @@ public class RecipeBook
         var recipeFolder = recipeBookFolder.GetFiles();
         foreach (var recipeFile in recipeFolder)
         {
-            var IngredientsLoaded = false;
+            var ingredientsLoaded = false;
             //If the file is a .DS_Store file, skip the current iteration
             if (recipeFile.Name == ".DS_Store") continue;
             try
@@ -176,10 +176,10 @@ public class RecipeBook
                     else if (ingredientLine.Contains('-'))
                     {
                         //All ingredients have been loaded
-                        IngredientsLoaded = true;
+                        ingredientsLoaded = true;
                     }
                     //If we are in the steps section of the file
-                    else if (IngredientsLoaded)
+                    else if (ingredientsLoaded)
                     {
                         newRecipe.AddStep(ingredientLine);
                     }
