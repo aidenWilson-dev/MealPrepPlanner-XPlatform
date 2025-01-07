@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using MealPrepPlanner_XPlatform.Model;
 using Microsoft.Maui.Controls;
@@ -53,5 +54,19 @@ public partial class MealSelectorPage : ContentPage
         var selectedItems = RecipeView.SelectedItems;
         //Return selected items as a list of recipes
         return selectedItems.Cast<Recipe>().ToList();
+    }
+
+    private void RecipeView_OnSelectionChanged(object? sender, SelectionChangedEventArgs e)
+    {
+        //Selected meals count
+        var count = 0.0;
+        //Loop through and count the amount of serves in the selected recipes
+        foreach (var selectedRecipe in e.CurrentSelection.OfType<Recipe>())
+        {
+            count += selectedRecipe.RecipeMacros.Serves;
+        }
+        //Set the remaining meals label to the remaining meals
+        var remainingMeals = (_mealsNeeded - count).ToString(CultureInfo.InvariantCulture);
+        MealsRemainingLabel.Text = remainingMeals;
     }
 }

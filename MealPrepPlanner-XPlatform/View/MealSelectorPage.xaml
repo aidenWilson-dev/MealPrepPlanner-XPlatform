@@ -44,7 +44,8 @@
                     x:Name="RecipeView"
                     x:DataType="model:RecipeBook"
                     ItemsSource="{Binding Recipes}"
-                    SelectionMode="Multiple">
+                    SelectionMode="Multiple"
+                    SelectionChanged="RecipeView_OnSelectionChanged">
                     <CollectionView.ItemsLayout>
                         <LinearItemsLayout Orientation="Vertical"/>
                     </CollectionView.ItemsLayout>
