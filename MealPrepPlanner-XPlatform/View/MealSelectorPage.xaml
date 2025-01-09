@@ -15,7 +15,7 @@
                <RowDefinition Height="*"/>
            </Grid.RowDefinitions>
            <VerticalStackLayout
-                Spacing="{OnPlatform 30, iOS=15}"
+                Spacing="{OnPlatform 30, iOS=10}"
                 Grid.Row="0">
                 <Label 
                     Text="Recipe Selector"
